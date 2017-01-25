@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+set -eu
+
+case ${1} in
+    app:start)
+        exec /sbin/runit-init
+        ;;
+    app:help)
+        echo 'Available options:'
+        echo ' app:start        - Starts Tinydns service'
+        echo ' app:help         - Displays the help'
+        echo ' [command]        - Execute the specified command, eg. sh.'
+        ;;
+    *)
+        exec "$@"
+        ;;
+esac
